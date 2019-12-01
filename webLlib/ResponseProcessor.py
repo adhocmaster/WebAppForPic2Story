@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import json, make_response
 import logging
 
 class ResponseProcessor:
@@ -8,11 +8,14 @@ class ResponseProcessor:
 
 
     def makeResponse(self, data, error=False):
-        response = jsonify({
+        responseStr = json.dumps({
             'data': data,
             'error': error
         })
 
         if self.debug:
-            logging.debug('ResponseProcessor: ' + str(response))
+            logging.debug('ResponseProcessor: ' + responseStr)
+
+        response = make_response(responseStr)
+        response.headers['Access-Control-Allow-Origin'] = '*'
         return response
