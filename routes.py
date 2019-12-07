@@ -5,11 +5,18 @@ from classifiers.ClassifierManager import Classifiermanager
 from flask import request
 import numpy as np
 import pprint
-printer = pprint.PrettyPrinter(indent=4)
+from library.Configuration import Configuration
+from dataProcessors.DoodleDataStats import DoodleDataStats
 
+configuration = Configuration()
+classifierManager = Classifiermanager(configuration)
+dataStats = DoodleDataStats()
+dataStats.load(configuration.get('doodle.stats'))
+classes = list(dataStats.stats['classes'].keys())
+
+printer = pprint.PrettyPrinter(indent=4)
 routesBluePrint = Blueprint('routes', __name__, template_folder=None)
 responseProcessor = ResponseProcessor(debug=True)
-classifierManager = Classifiermanager()
 
 @routesBluePrint.route('/')
 def hello_world():
@@ -42,9 +49,8 @@ def doodle2name():
    sep = ' '
 
    img = np.fromstring(imgStr, dtype=float, sep=sep).reshape(28,28,1) / 255
+   model = classifierManager.get('DoodleClassifier')
+   prediction = model.predictClassIndex(img)
+   data=[classes[prediction]]
 
-   data = classifierManager.get('DoodleClassifier').predict(img)
-
-   print('preicted data:')
-   printer.pprint(data)
    return responseProcessor.makeResponse(data)
