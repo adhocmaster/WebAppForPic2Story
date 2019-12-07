@@ -1,0 +1,12 @@
+test: This is nothing
+
+test2:
+  test22: this is something
+
+dataset:
+  maxPerClass: 1000000
+
+doodle:
+  stats: 'persistentCache/classes77stats.dill'
+  modelPath: './classifiers/models/Basic-ss100-0-model-test.h5'
+  weightPath: './classifiers/models/Basic-ss100-0-weight.h5'

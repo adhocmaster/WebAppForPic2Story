@@ -1,14 +1,25 @@
-from app import app
+from flask import Blueprint, render_template, abort
+from jinja2 import TemplateNotFound
+from webLlib.ResponseProcessor import ResponseProcessor
+from classifiers.ClassifierManager import Classifiermanager
+from flask import request
+import numpy as np
+import pprint
+printer = pprint.PrettyPrinter(indent=4)
 
+routesBluePrint = Blueprint('routes', __name__, template_folder=None)
+responseProcessor = ResponseProcessor(debug=True)
+classifierManager = Classifiermanager()
 
-@app.route('/')
+@routesBluePrint.route('/')
 def hello_world():
-   return 'Hello World'
+    data = 'Hello World'
+    return responseProcessor.makeResponse(data)
 
 
-@app.route("/api/doodle2story")
+@routesBluePrint.route("/api/doodle2story")
 def doodle2Story():
-    return """
+    data = """
     LITERATURE
     A Summary and Analysis of the ‘Puss in Boots’ Fairy Tale
     An introduction to a classic fairy tale – analysed by Dr Oliver Tearle
@@ -20,4 +31,20 @@ def doodle2Story():
 
     Shortly after this, Puss in Boots caught some partridges, and once again he took them to the King and announced that they were a gift from the Lord Marquis of Carabas. This happened for several months. Then, one day, Puss in Boots hatched his big plan: he commanded his master to wash at a certain point in the river, and waited until the King’s coach came riding by, with the Princess accompanying the King in the coach. Then, having concealed his master’s clothes under a rock, Puss in Boots jumped out in front of the coach and asked for help, claiming that his master, the Lord Marquis of Carabas, had been robbed, and all of his clothes had been taken.
     """
+    return responseProcessor.makeResponse(data)
 
+@routesBluePrint.route("/api/doodle2name", methods=['POST'])
+def doodle2name():
+   #  data = ["cat", "dog"]
+   imgStr = request.form.get('img')
+
+   # input image is just a flat with a separator
+   sep = ' '
+
+   img = np.fromstring(imgStr, dtype=float, sep=sep).reshape(28,28,1) / 255
+
+   data = classifierManager.get('DoodleClassifier').predict(img)
+
+   print('preicted data:')
+   printer.pprint(data)
+   return responseProcessor.makeResponse(data)
