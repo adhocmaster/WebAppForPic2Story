@@ -63,6 +63,8 @@ function penDown(e){
 
 
 function saveFile(){
+
+    $('#processing').show()
     //console.log(image.x_h);
     //console.log(image.x_l);
     //console.log(image.y_h);
@@ -107,9 +109,11 @@ function saveFile(){
          success:function(json){
              output = JSON.parse(json).data;
              p.innerHTML = output;
+             
+            $('#processing').show()
          },
          error:function(){
-             alert("Error");
+             $('#modal').show()
          }      
     });
     

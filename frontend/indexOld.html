@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Pic2Story_canvas</title>
+        <link rel = "Sylesheet" href = "style.css">
+        <script src="jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+        <canvas id = "canvas" width="800" height="600"></canvas>
+
+        <div class="dashboard">
+            <input type = "color" name = "penColor" value="#000000">
+            <input type = "range" name = "penWidth" min="1" max="100" 
+                   step = "2" value = "13">
+            <button id = "saver">Generate Story</button>
+        </div>
+        <div class="GPT">
+            <img src = "" id = "image">
+            <script src = "script.js"></script>
+            <p id="story"></p>
+        </div>
+    </body>
+    
+</html>

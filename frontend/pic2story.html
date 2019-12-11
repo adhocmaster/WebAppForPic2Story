@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Pic2Story</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="css/freelancer.css" rel="stylesheet">
+  
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body id="page-top">
+
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+  
+        <!-- Masthead Avatar Image -->
+        <img class="" style="width: 400px;" src="img/logo.PNG" alt="">
+  
+      </div>
+    </header>
+  <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+
+      <!-- Contact Section Form -->
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          
+            <h5>1. Draw a picture</h5>
+            <canvas id = "canvas" width="500" height="500" style='background: #ffffff'></canvas>
+            <div class="dashboard">
+                <input type = "color" name = "penColor" value="#000000">
+                <input type = "range" name = "penWidth" min="1" max="100" 
+                      step = "2" value = "13">
+                <button id = "saver" class="btn btn-primary" >Generate Story</button>
+                <div id='processing' class="spinner-border text-secondary hidden" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            
+            <canvas id = "canvas_temp" width="0" height="0"></canvas>
+            <canvas id = "final" width="0" height="0"></canvas>
+        </div>
+        <div class="col-lg-6 mx-auto">
+            <h5>2. Story</h5>
+            <div class="card">
+                <div class="card-body">
+                    <div class="GPT">
+                        <img src = "" id = "image">
+                        <p id="story"></p>
+                    </div>
+                </div>
+              </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Ai Down!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+  
+  <script src = "script.js"></script>
+
+</body>
+
+</html>
