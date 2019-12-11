@@ -7,6 +7,6 @@ dataset:
   maxPerClass: 1000000
 
 doodle:
-  stats: 'persistentCache/classes77stats.dill'
-  modelPath: './classifiers/models/Basic-ss100-0-model-test.h5'
-  weightPath: './classifiers/models/Basic-ss100-0-weight.h5'
+  stats: 'persistentCache/classes50stats.dill'
+  modelPath: './classifiers/models/Basic-ss50-3-model-test.h5'
+  weightPath: './classifiers/models/Basic-ss50-3-weight.h5'

@@ -26,11 +26,20 @@ let image = {
     y_l:600
 }
 
-saver:addEventListener('click', saveFile);
+// saver:addEventListener('dblclick', saveFile);
 canvas.addEventListener('mousedown', penDown);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', noDown);
 canvas.addEventListener('mouseout', noDown);
+
+$(document).ready(function(){
+    $('#resetCanvas').click(function(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    })
+    $('#saver').click(function(){
+        saveFile()
+    })
+})
 
 
 
