@@ -93,4 +93,6 @@ def makeprompt(word):
         "Once there lived Mr. Cat who loved milk",
         "Once upon a time there were a King and a Queen who had an only daughter",
         "There was once a crab who lived in a hole on the shady side of a mountain"]
-    return prompt[randint(0, len(prompt)-1)]
+    # return prompt[randint(0, len(prompt)-1)]
+
+    return "Once upon a time there was a " + word[0]

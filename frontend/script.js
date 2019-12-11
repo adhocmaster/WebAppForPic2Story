@@ -26,7 +26,7 @@ let image = {
     y_l:600
 }
 
-saver:addEventListener('dblclick', saveFile);
+saver:addEventListener('click', saveFile);
 canvas.addEventListener('mousedown', penDown);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', noDown);
@@ -64,7 +64,7 @@ function penDown(e){
 
 function saveFile(){
 
-    $('#processing').show()
+    $('#processing').removeClass('d-none')
     //console.log(image.x_h);
     //console.log(image.x_l);
     //console.log(image.y_h);
@@ -110,10 +110,11 @@ function saveFile(){
              output = JSON.parse(json).data;
              p.innerHTML = output;
              
-            $('#processing').show()
+            $('#processing').addClass('d-none')
          },
          error:function(){
              $('#modal').show()
+             $('#processing').addClass('d-none')
          }      
     });
     
