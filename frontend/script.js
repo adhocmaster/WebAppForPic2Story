@@ -35,8 +35,11 @@ canvas.addEventListener('mouseout', noDown);
 $(document).ready(function(){
     $('#resetCanvas').click(function(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        $('#story').html('');
     })
     $('#saver').click(function(){
+        
+        $('#story').html('');
         saveFile()
     })
 })
